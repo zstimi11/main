@@ -1,5 +1,5 @@
 #实现图型匹配
-1，首先引入库 **cv2,numpy**
+1，首先引入库 **cv2,numpy，random**
 2，定义一个读取图片的函数，方便接下来代码内的读取。
 def cv_show(name,img):
     cv2.imshow(name,img)
@@ -13,10 +13,9 @@ def cv_show(name,img):
 2，通过findcontours返回轮廓和结构
 3，因为contours会将所检测的轮廓计入列表，所以直接用len读取
 #标记轮廓
-通过drawcontours函数绘制轮廓
+通过drawcontours函数绘制轮廓，用黑线描出
 #截取
-template = canvas[45:155,45:155]      这里可以换成imread
-h,w = template.shape[:2]    #获得shape中前两个元素，即height和weight
+利用contours列表随机选取一个作为模板
 
 #模板匹配
 result = cv2.matchTemplate(canvas,template,cv2.TM_CCOEFF_NORMED)
